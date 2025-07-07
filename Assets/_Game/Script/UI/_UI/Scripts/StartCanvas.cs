@@ -16,7 +16,7 @@ public class StartCanvas : UICanvas
             UIManager.Ins.TransitionUI<ChangeUICanvas, StartCanvas>(0.5f, 
                 ()=>
                 {
-                    UIManager.Ins.OpenUI<ChooseLevelCanvas>();
+                    UIManager.Ins.OpenUI<MainCanvas>();
                 });
         });
     }

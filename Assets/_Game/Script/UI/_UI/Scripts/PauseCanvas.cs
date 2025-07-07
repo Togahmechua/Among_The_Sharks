@@ -44,8 +44,8 @@ public class PauseCanvas : UICanvas
             UIManager.Ins.TransitionUI<ChangeUICanvas, PauseCanvas>(0.6f,
                 () =>
                 {
-                    LevelManager.Ins.DespawnMap();
-                    UIManager.Ins.OpenUI<ChooseLevelCanvas>();
+                    //LevelManager.Ins.DespawnMap();
+                    UIManager.Ins.OpenUI<StartCanvas>();
                 });
         });
 
@@ -54,7 +54,7 @@ public class PauseCanvas : UICanvas
             //AudioManager.Ins.PlaySFX(AudioManager.Ins.click);
             UIManager.Ins.CloseUI<PauseCanvas>();
             UIManager.Ins.OpenUI<MainCanvas>();
-            LevelManager.Ins.LoadMapByID(LevelManager.Ins.curMapID);
+            //LevelManager.Ins.LoadMapByID(LevelManager.Ins.curMapID);
         });
 
         soundBtn.onClick.AddListener(() =>

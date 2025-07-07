@@ -100,8 +100,8 @@ public class WinCanvas : UICanvas
             () =>
             {
                 Debug.Log("Win");
-                LevelManager.Ins.DespawnMap();
-                UIManager.Ins.OpenUI<ChooseLevelCanvas>();
+                //LevelManager.Ins.DespawnMap();
+                UIManager.Ins.OpenUI<StartCanvas>();
             }
         );
     }
