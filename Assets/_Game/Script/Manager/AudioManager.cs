@@ -1,52 +1,54 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : Singleton<AudioManager>
 {
     [Header("----- Audio Source -----")]
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioMixer masterMixer;
 
     [Header("----- Audio Clip -----")]
     public AudioClip backgroundClip;
     public AudioClip click;
     public AudioClip win;
-    public AudioClip loose;
-    public AudioClip collect;
-    public AudioClip eatBubble;
-    public AudioClip clickMoveBtn;
+    public AudioClip shoot;
+    public AudioClip cut;
+    public AudioClip coin;
+    public AudioClip pain;
 
     private bool isMuted;
 
     public bool IsMuted => isMuted;
 
-    /*private void Start()
+    private void Start()
     {
         musicSource.clip = backgroundClip;
         musicSource.Play();
-    }*/
+        TurnOn();
+    }
 
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
     }
 
-    public void TurnOff()
-    {
-        isMuted = true;
-
-        //this.enabled = false;
-        sfxSource.volume = 0f;
-        musicSource.volume = 0f;
-    }
-
     public void TurnOn()
     {
         isMuted = false;
 
-        //this.enabled = true;
-        sfxSource.volume = 0.7f;
-        musicSource.volume = 0.5f;
+        masterMixer.SetFloat("Music", -13.18f);
+        masterMixer.SetFloat("SFX", 0f);
+    }
+
+
+    public void TurnOff()
+    {
+        isMuted = true;
+
+        masterMixer.SetFloat("Music", -80f);
+        masterMixer.SetFloat("SFX", -80f); // -80 dB là mức yên lặng hoàn toàn
     }
 }

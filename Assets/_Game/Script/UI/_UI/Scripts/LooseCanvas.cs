@@ -91,7 +91,7 @@ public class LooseCanvas : UICanvas
             () =>
             {
                 Debug.Log("Loose");
-                //LevelManager.Ins.DespawnMap();
+                LevelManager.Ins.DespawmLevel();
                 UIManager.Ins.OpenUI<StartCanvas>();
             }
         );

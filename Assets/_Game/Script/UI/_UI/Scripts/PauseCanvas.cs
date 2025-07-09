@@ -52,9 +52,16 @@ public class PauseCanvas : UICanvas
         retryBtn.onClick.AddListener(() =>
         {
             //AudioManager.Ins.PlaySFX(AudioManager.Ins.click);
-            UIManager.Ins.CloseUI<PauseCanvas>();
-            UIManager.Ins.OpenUI<MainCanvas>();
-            //LevelManager.Ins.LoadMapByID(LevelManager.Ins.curMapID);
+            
+
+            UIManager.Ins.TransitionUI<ChangeUICanvas, PauseCanvas>(0.6f,
+                () =>
+                {
+                    UIManager.Ins.CloseUI<PauseCanvas>();
+                    LevelManager.Ins.DespawmLevel();
+                    LevelManager.Ins.SpawnLevel();
+                    UIManager.Ins.OpenUI<MainCanvas>();
+                });
         });
 
         soundBtn.onClick.AddListener(() =>
